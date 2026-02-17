@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model HeroSlide {
+  id        Int      @id @default(autoincrement())
+  title     String
+  subtitle  String
+  desc      String   @db.Text
+  image     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Contact {
+  id        Int      @id @default(1)
+  phone     String
+  whatsapp  String
+  instagram String
+  address   String
+  email     String
+  updatedAt DateTime @updatedAt
+}
+
+model Pricing {
+  id           Int      @id @default(1)
+  baseFee      Float
+  standardRate Float
+  detailedRate Float
+  roomRate     Float
+  updatedAt    DateTime @updatedAt
+}
+
+model PricingExtra {
+  id        String   @id
+  label     String
+  price     Float
+  updatedAt DateTime @updatedAt
+}
+
+model Service {
+  id         String   @id
+  title      String
+  desc       String   @db.Text
+  img        String
+  color      String
+  multiplier Float
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model BlogPost {
+  id        Int      @id @default(autoincrement())
+  title     String
+  excerpt   String   @db.Text
+  content   String   @db.LongText
+  image     String
+  date      String
+  category  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?  @db.Text
+  category    String
+  region      String
+  imageBefore String
+  imageAfter  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  name      String
+  comment   String   @db.Text
+  rating    Int      @default(5)
+  status    String   @default("pending")
+  date      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

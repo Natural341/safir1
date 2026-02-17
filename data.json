@@ -1,0 +1,115 @@
+{
+  "hero": {
+    "slides": [
+      {
+        "id": 1,
+        "title": "Safir Temizlik Güvencesi",
+        "subtitle": "İstanbul'un En İyi Temizlik Hizmeti",
+        "desc": "Yaşam alanlarınızda teknolojik ve hijyenik Safir dokunuşunu hissedin. Profesyonel kadromuzla İstanbul genelinde yanınızdayız.",
+        "image": "/images/gallery/salon.jpg"
+      },
+      {
+        "id": 2,
+        "title": "7/24 Profesyonel Ekip",
+        "subtitle": "Pırıl Pırıl Bir Yaşam Alanı",
+        "desc": "Eviniz veya ofisiniz için detaylı hijyen çözümleri. Aynı gün hizmet imkanıyla zamandan tasarruf edin.",
+        "image": "/images/gallery/ferahlik.jpg"
+      },
+      {
+        "id": 3,
+        "title": "Kurumsal Çözümler",
+        "subtitle": "Ofisten Fabrikaya Hijyen Standartları",
+        "desc": "Büyük ölçekli projelerde uzman kadromuzla yanınızdayız. Periyodik bakım planlarıyla sürekli temizlik garantisi.",
+        "image": "/images/gallery/kurumsal.jpg"
+      }
+    ]
+  },
+  "contact": {
+    "phone": "0850 532 52 82",
+    "whatsapp": "908505325282",
+    "instagram": "safirtemizlik.hizmetleri",
+    "address": "İstanbul Geneli Hizmet Ağı",
+    "email": "destek@safirtemizlik.com.tr"
+  },
+  "pricing": {
+    "baseFee": 2450,
+    "standardRate": 65,
+    "detailedRate": 95,
+    "roomRate": 850,
+    "extras": [
+      {
+        "id": "materials",
+        "label": "Malzemeli Temizlik",
+        "price": 850
+      },
+      {
+        "id": "windows",
+        "label": "Cam Temizliği",
+        "price": 1200
+      },
+      {
+        "id": "balcony",
+        "label": "Balkon Yıkama",
+        "price": 750
+      }
+    ]
+  },
+  "services": [
+    {
+      "id": "ev",
+      "title": "Ev Temizliği",
+      "desc": "Eviniz için detaylı ve hijyenik çözümler.",
+      "img": "/images/services/ev.jpg",
+      "color": "text-blue-600 bg-blue-50",
+      "multiplier": 1
+    },
+    {
+      "id": "ofis",
+      "title": "Ofis Temizliği",
+      "desc": "Kurumsal iş yerleri için profesyonel hijyen.",
+      "img": "/images/services/ofis.jpg",
+      "color": "text-cyan-600 bg-cyan-50",
+      "multiplier": 1.2
+    },
+    {
+      "id": "apartman",
+      "title": "Apartman/Merdiven Temizliği",
+      "desc": "Ortak alanlar için periyodik temizlik hizmeti.",
+      "img": "/images/services/apartman.jpg",
+      "color": "text-amber-600 bg-amber-50",
+      "multiplier": 0.8
+    },
+    {
+      "id": "kurumsal",
+      "title": "Kurumsal Temizlik",
+      "desc": "Büyük ölçekli tesisler ve fabrikalar için uzman kadro.",
+      "img": "/images/services/kurumsal.jpg",
+      "color": "text-indigo-600 bg-indigo-50",
+      "multiplier": 1.5
+    },
+    {
+      "id": "bos-ev",
+      "title": "Boş Ev Temizliği",
+      "desc": "Taşınma öncesi ve sonrası derinlemesine sterilizasyon.",
+      "img": "/images/services/bos-ev.jpg",
+      "color": "text-purple-600 bg-purple-50",
+      "multiplier": 1.3
+    },
+    {
+      "id": "cam",
+      "title": "Cam Temizliği",
+      "desc": "Dış cephe ve yüksek katlı binalar için profesyonel cam temizliği.",
+      "img": "/images/services/cam.jpg",
+      "color": "text-sky-600 bg-sky-50",
+      "multiplier": 1.1
+    },
+    {
+      "id": "malzemeli",
+      "title": "Malzemeli Temizlik Hizmeti",
+      "desc": "Deterjan ve ekipman dahil, tam kapsamlı temizlik.",
+      "img": "/images/services/malzemeli.jpg",
+      "color": "text-emerald-600 bg-emerald-50",
+      "multiplier": 1.4
+    }
+  ]
+}
