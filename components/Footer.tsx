@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useCMS } from '../context/CMSContext';
 
 const Footer: React.FC = () => {
@@ -26,9 +27,19 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 items-start mb-16">
 
           <div className="lg:col-span-4 flex flex-col items-start text-left">
-            <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-lg border border-white/10">S</div>
-              <span className="text-3xl font-black tracking-tight">Safir<span className="text-blue-500">Temizlik</span></span>
+            <Link href="/" className="flex items-center gap-4 mb-8 group">
+              <div className="relative w-14 h-14 overflow-hidden rounded-2xl shadow-xl ring-1 ring-white/10">
+                <Image 
+                  src="/logo.png" 
+                  alt="Safir Temizlik Logo" 
+                  fill 
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-3xl font-black tracking-tight">Safir<span className="text-blue-500">Temizlik</span></span>
+                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em] mt-0.5">Profesyonel Hijyen</span>
+              </div>
             </Link>
             <p className="text-slate-400 text-base leading-relaxed mb-8 max-w-sm font-medium">İstanbul'un her noktasına premium temizlik hizmeti. Eviniz ve ofisiniz için Safir Temizlik dokunuşunu keşfedin.</p>
           </div>

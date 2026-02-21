@@ -14,10 +14,10 @@ export default function Home() {
       <Services />
       <Gallery />
       <QuoteCalculator />
-      <Reviews />
       <Blog />
       <FAQ />
       <ContactForm />
+      <Reviews />
     </div>
   );
 }

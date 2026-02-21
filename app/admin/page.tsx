@@ -1,17 +1,62 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCMS } from '@/context/CMSContext';
 import Link from 'next/link';
+import { Star } from 'lucide-react';
 
 export default function AdminPage() {
   const { data, updateData } = useCMS();
   const [localData, setLocalData] = useState(data);
-  const [activeTab, setActiveTab] = useState<'general' | 'services' | 'pricing' | 'gallery'>('general');
+  const [activeTab, setActiveTab] = useState<'general' | 'services' | 'pricing' | 'gallery' | 'reviews'>('general');
 
   const handleSave = () => {
     updateData(localData);
     alert("Tüm değişiklikler başarıyla kaydedildi!");
+  };
+
+  const [allReviews, setAllReviews] = useState<any[]>([]);
+  const [loadingReviews, setLoadingReviews] = useState(false);
+
+  useEffect(() => {
+    if (activeTab === 'reviews') {
+      setLoadingReviews(true);
+      fetch('/api/reviews?admin=true')
+        .then(res => res.json())
+        .then(data => {
+          setAllReviews(data);
+          setLoadingReviews(false);
+        });
+    }
+  }, [activeTab]);
+
+  const generateReviewLink = async () => {
+    const res = await fetch('/api/reviews/token', { method: 'POST' });
+    const { token } = await res.json();
+    const link = `${window.location.origin}/yorum-yap/${token}`;
+    const whatsappLink = `https://wa.me/${data?.contact?.whatsapp || '905529475313'}?text=Hizmetimizi değerlendirmek için bu bağlantıyı kullanabilirsiniz: ${link}`;
+    window.open(whatsappLink, '_blank');
+    alert("WhatsApp için yorum linki oluşturuldu ve yeni sekmede açıldı!");
+  };
+
+  const updateReviewStatus = async (id: number, status: string) => {
+    await fetch('/api/reviews', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, status })
+    });
+    setAllReviews(prev => prev.map(r => r.id === id ? { ...r, status } : r));
+  };
+
+  const deleteReview = async (id: number) => {
+    if (confirm('Bu yorumu silmek istediğinize emin misiniz?')) {
+      await fetch('/api/reviews', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id })
+      });
+      setAllReviews(prev => prev.filter(r => r.id !== id));
+    }
   };
 
   const inputClass = "w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all";
@@ -41,6 +86,7 @@ export default function AdminPage() {
                 { id: 'services', label: 'Hizmetler' },
                 { id: 'pricing', label: 'Fiyat Ayarları' },
                 { id: 'gallery', label: 'Foto Galeri' },
+                { id: 'reviews', label: 'Müşteri Yorumları' },
               ].map(tab => (
                 <button
                   key={tab.id}
@@ -52,71 +98,58 @@ export default function AdminPage() {
               ))}
             </div>
 
-            {/* Content Area (Existing AdminPanel logic) */}
-            <div className="flex-1 p-10 bg-white overflow-y-auto">
-               {/* Buraya mevcut AdminPanel.tsx içeriğini entegre ediyorum */}
-               {activeTab === 'general' && (
-                <div className="max-w-2xl space-y-10">
-                  <section>
-                    <h3 className="text-lg font-black mb-6 text-slate-900 flex items-center gap-2">
-                      <span className="w-1.5 h-6 bg-blue-600 rounded-full"></span> Hero Slaytları
-                    </h3>
-                    <div className="grid gap-8">
-                      {localData.hero.slides.map((slide, idx) => (
-                        <div key={slide.id} className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                          <div className="space-y-4">
-                            <div>
-                               <label className={labelClass}>Üst Başlık</label>
-                               <input value={slide.title} onChange={e => {
-                                 const newSlides = [...localData.hero.slides];
-                                 newSlides[idx].title = e.target.value;
-                                 setLocalData({...localData, hero: { slides: newSlides }});
-                               }} className={inputClass} />
-                            </div>
-                            <div>
-                               <label className={labelClass}>Ana Başlık</label>
-                               <input value={slide.subtitle} onChange={e => {
-                                 const newSlides = [...localData.hero.slides];
-                                 newSlides[idx].subtitle = e.target.value;
-                                 setLocalData({...localData, hero: { slides: newSlides }});
-                               }} className={inputClass} />
-                            </div>
-                            <div>
-                               <label className={labelClass}>Görsel URL</label>
-                               <input value={slide.image} onChange={e => {
-                                 const newSlides = [...localData.hero.slides];
-                                 newSlides[idx].image = e.target.value;
-                                 setLocalData({...localData, hero: { slides: newSlides }});
-                               }} className={inputClass} />
-                            </div>
-                          </div>
-                        </div>
-                      ))}
+            {/* Content Area */}
+            <div className="flex-1 p-10 bg-white overflow-y-auto max-h-[800px]">
+               {activeTab === 'reviews' && (
+                 <div className="space-y-8">
+                    <div className="flex justify-between items-center bg-blue-50 p-6 rounded-3xl border border-blue-100">
+                      <div>
+                        <h4 className="font-black text-blue-900 mb-1">Yeni Yorum İste</h4>
+                        <p className="text-xs text-blue-700 font-medium">Müşterinize özel WhatsApp yorum linki oluşturun.</p>
+                      </div>
+                      <button 
+                        onClick={generateReviewLink}
+                        className="bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-sm shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all"
+                      >
+                        Yorum Linki Oluştur
+                      </button>
                     </div>
-                  </section>
-                </div>
-              )}
 
-              {activeTab === 'pricing' && (
-                <div className="max-w-2xl space-y-10">
-                  <section>
-                    <h3 className="text-lg font-black mb-6 text-slate-900 flex items-center gap-2">
-                      <span className="w-1.5 h-6 bg-blue-600 rounded-full"></span> 2026 Fiyatlandırma
-                    </h3>
-                    <div className="grid grid-cols-2 gap-6">
-                      <div>
-                        <label className={labelClass}>Baz Servis Ücreti (TL)</label>
-                        <input type="number" value={localData.pricing.baseFee} onChange={e => setLocalData({...localData, pricing: {...localData.pricing, baseFee: Number(e.target.value)}})} className={inputClass} />
-                      </div>
-                      <div>
-                        <label className={labelClass}>Oda Başı Ücret (TL)</label>
-                        <input type="number" value={localData.pricing.roomRate} onChange={e => setLocalData({...localData, pricing: {...localData.pricing, roomRate: Number(e.target.value)}})} className={inputClass} />
-                      </div>
+                    <div className="space-y-4">
+                      {loadingReviews ? <p className="text-center py-10">Yükleniyor...</p> : allReviews.length === 0 ? <p className="text-center py-10">Henüz yorum yok.</p> : (
+                        allReviews.map((r: any) => (
+                          <div key={r.id} className="p-6 border border-slate-100 rounded-3xl bg-slate-50/50 hover:bg-slate-50 transition-all">
+                            <div className="flex justify-between items-start mb-4">
+                              <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center font-black text-blue-600 shadow-sm border border-slate-100">{r.name.charAt(0)}</div>
+                                <div>
+                                  <h5 className="font-black text-slate-900">{r.name} <span className="text-[10px] text-slate-400 ml-2">{r.date}</span></h5>
+                                  <div className="flex text-amber-400 gap-0.5 mt-0.5">
+                                    {[...Array(r.rating)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="flex gap-2">
+                                {r.status === 'pending' && r.comment && (
+                                  <button onClick={() => updateReviewStatus(r.id, 'approved')} className="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-lg text-xs font-black hover:bg-emerald-200 transition-all">Onayla</button>
+                                )}
+                                {r.status === 'approved' && (
+                                  <button onClick={() => updateReviewStatus(r.id, 'pending')} className="px-4 py-2 bg-slate-200 text-slate-600 rounded-lg text-xs font-black hover:bg-slate-300 transition-all">Yayından Kaldır</button>
+                                )}
+                                <button onClick={() => deleteReview(r.id)} className="px-4 py-2 bg-rose-50 text-rose-600 rounded-lg text-xs font-black hover:bg-rose-100 transition-all">Sil</button>
+                              </div>
+                            </div>
+                            {r.comment ? (
+                              <p className="text-sm text-slate-600 font-medium leading-relaxed italic border-l-4 border-slate-200 pl-4 py-1">{r.comment}</p>
+                            ) : (
+                              <p className="text-xs text-amber-600 font-black tracking-widest uppercase">Bekleyen Link (Müşteri henüz yazmadı)</p>
+                            )}
+                          </div>
+                        ))
+                      )}
                     </div>
-                  </section>
-                </div>
-              )}
-              {/* Diğer tablar da benzer şekilde eklendi... */}
+                 </div>
+               )}
             </div>
           </div>
         </div>

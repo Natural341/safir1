@@ -1,11 +1,14 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    // Sadece onaylanmış yorumları getir
+    const { searchParams } = new URL(request.url);
+    const isAdmin = searchParams.get('admin') === 'true';
+
+    // Eğer admin ise hepsini getir, değilse sadece onaylıları
     const reviews = await prisma.review.findMany({
-      where: { status: 'approved' },
+      where: isAdmin ? {} : { status: 'approved' },
       orderBy: { createdAt: 'desc' }
     });
     return NextResponse.json(reviews);
@@ -17,7 +20,6 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    // Yeni yorumlar varsayılan olarak "pending" (onay bekliyor) düşer
     const review = await prisma.review.create({
       data: {
         ...body,
@@ -33,13 +35,25 @@ export async function POST(request: Request) {
 
 export async function PATCH(request: Request) {
   try {
-    const { id, status } = await request.json();
+    const { id, status, reply } = await request.json();
     const updatedReview = await prisma.review.update({
       where: { id: Number(id) },
-      data: { status }
+      data: { status, reply }
     });
     return NextResponse.json(updatedReview);
   } catch (error) {
     return NextResponse.json({ error: 'Yorum güncellenemedi' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const { id } = await request.json();
+    await prisma.review.delete({
+      where: { id: Number(id) }
+    });
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    return NextResponse.json({ error: 'Yorum silinemedi' }, { status: 500 });
   }
 }

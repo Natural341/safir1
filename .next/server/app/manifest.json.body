@@ -1,0 +1,17 @@
+{
+    "name": "Safir Temizlik",
+    "short_name": "Safir",
+    "description": "İstanbul Profesyonel Temizlik Hizmetleri",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#2563eb",
+    "icons": [
+        {
+            "src": "/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

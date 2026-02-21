@@ -83,7 +83,9 @@ model Review {
   name      String
   comment   String   @db.Text
   rating    Int      @default(5)
-  status    String   @default("pending")
+  status    String   @default("pending") // pending, approved, rejected
+  reply     String?  @db.Text
+  token     String?  @unique // For unique review links
   date      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

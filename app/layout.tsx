@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Safir Temizlik" }],
   creator: "Safir Temizlik",
   publisher: "Safir Temizlik",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   formatDetection: {
     email: false,
     address: true,
