@@ -31,6 +31,14 @@
       "namedRegex": "^/hizmet\\-bolgeleri/(?<nxtPslug>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/hizmetler/[slug]",
+      "regex": "^/hizmetler/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/hizmetler/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/yorum-yap/[token]",
       "regex": "^/yorum\\-yap/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -71,6 +79,18 @@
       "namedRegex": "^/blog(?:/)?$"
     },
     {
+      "page": "/cookies",
+      "regex": "^/cookies(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cookies(?:/)?$"
+    },
+    {
+      "page": "/hakkimizda",
+      "regex": "^/hakkimizda(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hakkimizda(?:/)?$"
+    },
+    {
       "page": "/icon.png",
       "regex": "^/icon\\.png(?:/)?$",
       "routeKeys": {},
@@ -87,6 +107,12 @@
       "regex": "^/manifest\\.json(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/manifest\\.json(?:/)?$"
+    },
+    {
+      "page": "/privacy",
+      "regex": "^/privacy(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/privacy(?:/)?$"
     },
     {
       "page": "/robots.txt",

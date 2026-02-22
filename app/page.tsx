@@ -6,6 +6,7 @@ import Reviews from "@/components/Reviews";
 import Blog from "@/components/Blog";
 import FAQ from "@/components/FAQ";
 import ContactForm from "@/components/ContactForm";
+import Regions from "@/components/Regions";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <QuoteCalculator />
       <Blog />
       <FAQ />
+      <Regions />
       <ContactForm />
       <Reviews />
     </div>

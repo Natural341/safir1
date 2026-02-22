@@ -28,31 +28,13 @@
     "disableStaticImages": false,
     "minimumCacheTTL": 60,
     "formats": [
+      "image/avif",
       "image/webp"
     ],
     "dangerouslyAllowSVG": false,
     "contentSecurityPolicy": "script-src 'none'; frame-src 'none'; sandbox;",
     "contentDispositionType": "attachment",
-    "remotePatterns": [
-      {
-        "protocol": "https",
-        "hostname": "^(?:^(?:images\\.unsplash\\.com)$)$",
-        "port": "",
-        "pathname": "^(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?))$"
-      },
-      {
-        "protocol": "https",
-        "hostname": "^(?:^(?:plus\\.unsplash\\.com)$)$",
-        "port": "",
-        "pathname": "^(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?))$"
-      },
-      {
-        "protocol": "https",
-        "hostname": "^(?:^(?:picsum\\.photos)$)$",
-        "port": "",
-        "pathname": "^(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?))$"
-      }
-    ],
+    "remotePatterns": [],
     "unoptimized": false,
     "sizes": [
       640,

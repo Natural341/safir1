@@ -27,12 +27,26 @@ export async function POST(request: Request) {
   }
 }
 
+export async function PUT(request: Request) {
+  try {
+    const body = await request.json();
+    const { id, ...data } = body;
+    const post = await prisma.blogPost.update({
+      where: { id: Number(id) },
+      data
+    });
+    return NextResponse.json(post);
+  } catch (error) {
+    return NextResponse.json({ error: 'Blog yazisi guncellenemedi' }, { status: 500 });
+  }
+}
+
 export async function DELETE(request: Request) {
   try {
     const { id } = await request.json();
     await prisma.blogPost.delete({ where: { id: Number(id) } });
     return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json({ error: 'Blog yazısı silinemedi' }, { status: 500 });
+    return NextResponse.json({ error: 'Blog yazisi silinemedi' }, { status: 500 });
   }
 }

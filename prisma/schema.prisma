@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -11,7 +11,7 @@ model HeroSlide {
   id        Int      @id @default(autoincrement())
   title     String
   subtitle  String
-  desc      String   @db.Text
+  desc      String
   image     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -46,7 +46,7 @@ model PricingExtra {
 model Service {
   id         String   @id
   title      String
-  desc       String   @db.Text
+  desc       String
   img        String
   color      String
   multiplier Float
@@ -57,8 +57,8 @@ model Service {
 model BlogPost {
   id        Int      @id @default(autoincrement())
   title     String
-  excerpt   String   @db.Text
-  content   String   @db.LongText
+  excerpt   String
+  content   String
   image     String
   date      String
   category  String
@@ -69,7 +69,7 @@ model BlogPost {
 model Project {
   id          Int      @id @default(autoincrement())
   title       String
-  description String?  @db.Text
+  description String?
   category    String
   region      String
   imageBefore String
@@ -81,10 +81,10 @@ model Project {
 model Review {
   id        Int      @id @default(autoincrement())
   name      String
-  comment   String   @db.Text
+  comment   String
   rating    Int      @default(5)
   status    String   @default("pending") // pending, approved, rejected
-  reply     String?  @db.Text
+  reply     String?
   token     String?  @unique // For unique review links
   date      String
   createdAt DateTime @default(now())

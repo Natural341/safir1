@@ -2,16 +2,26 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useCMS } from '../context/CMSContext';
 
 interface ServicesProps {
   onServiceSelect?: (serviceId: string) => void;
 }
 
+const slugMap: Record<string, string> = {
+  ev: 'ev-temizligi',
+  ofis: 'ofis-temizligi',
+  apartman: 'apartman-temizligi',
+  kurumsal: 'kurumsal-temizlik',
+  'bos-ev': 'bos-ev-temizligi',
+  cam: 'cam-temizligi',
+  malzemeli: 'malzemeli-temizlik',
+};
+
 const Services: React.FC<ServicesProps> = ({ onServiceSelect }) => {
   const { data } = useCMS();
 
-  // Helper to get specific modern icon based on service ID
   const getServiceIcon = (id: string) => {
     switch (id) {
       case 'ev':
@@ -37,7 +47,7 @@ const Services: React.FC<ServicesProps> = ({ onServiceSelect }) => {
 
   return (
     <section id="services" className="py-24 bg-slate-50 relative">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_rgb(0_0_0_/_0.03)_1px,_transparent_0)] bg-[length:24px_24px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
@@ -51,9 +61,10 @@ const Services: React.FC<ServicesProps> = ({ onServiceSelect }) => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {data.services.map((service, idx) => {
             const icon = getServiceIcon(service.id);
+            const slug = slugMap[service.id];
 
             return (
-              <div key={idx} className="group flex flex-col bg-white rounded-[2rem] overflow-hidden border border-slate-100 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 hover:-translate-y-2">
+              <Link key={idx} href={slug ? `/hizmetler/${slug}` : '/services'} className="group flex flex-col bg-white rounded-[2rem] overflow-hidden border border-slate-100 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 hover:-translate-y-2">
                 <div className="h-56 overflow-hidden relative">
                   <Image
                     src={service.img}
@@ -71,18 +82,15 @@ const Services: React.FC<ServicesProps> = ({ onServiceSelect }) => {
                 <div className="p-8 flex flex-col flex-grow">
                   <h4 className="text-xl font-black text-slate-900 mb-3">{service.title}</h4>
                   <p className="text-slate-500 text-sm leading-relaxed font-medium mb-6 flex-grow line-clamp-3">
-                    {service.desc}
+                    {service.desc.replace(/<[^>]*>/g, '')}
                   </p>
 
-                  <button
-                    onClick={() => onServiceSelect?.(service.title)}
-                    className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-blue-600 hover:text-blue-800 transition-colors group-hover:translate-x-2 duration-300 cursor-pointer"
-                  >
+                  <span className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-blue-600 group-hover:text-blue-800 transition-colors group-hover:translate-x-2 duration-300">
                     İncele
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-                  </button>
+                  </span>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

@@ -3,25 +3,25 @@ import { cookies } from 'next/headers';
 
 export async function POST(request: Request) {
   try {
-    const { password } = await request.json();
-    const adminPassword = process.env.ADMIN_PASSWORD;
+    const { username, password } = await request.json();
+    const adminPassword = process.env.ADMIN_PASSWORD || 'safir123';
+    const adminUsername = process.env.ADMIN_USERNAME || 'admin';
 
-    if (password === adminPassword) {
+    if (username === adminUsername && password === adminPassword) {
       const cookieStore = await cookies();
-      
-      // Güvenli çerez oluştur (30 gün geçerli)
+
       cookieStore.set('admin_session', 'authenticated', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
-        maxAge: 60 * 60 * 24 * 30, // 30 gün
+        maxAge: 60 * 60 * 24 * 30,
         path: '/',
       });
 
       return NextResponse.json({ success: true });
     }
 
-    return NextResponse.json({ error: 'Invalid password' }, { status: 401 });
+    return NextResponse.json({ error: 'Kullanici adi veya sifre hatali' }, { status: 401 });
   } catch (error) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

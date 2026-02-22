@@ -47,3 +47,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Proje kaydedilemedi' }, { status: 500 });
   }
 }
+
+export async function DELETE(request: Request) {
+  try {
+    const { id } = await request.json();
+    await prisma.project.delete({ where: { id: Number(id) } });
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    return NextResponse.json({ error: 'Proje silinemedi' }, { status: 500 });
+  }
+}

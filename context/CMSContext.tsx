@@ -50,21 +50,28 @@ const initialData: CMSData = {
         title: "Safir Temizlik Güvencesi",
         subtitle: "İstanbul'un En İyi Temizlik Hizmeti",
         desc: "Yaşam alanlarınızda teknolojik ve hijyenik Safir dokunuşunu hissedin. Profesyonel kadromuzla İstanbul genelinde yanınızdayız.",
-        image: "/images/gallery/salon.jpg"
+        image: "/images/hero1.jpg"
       },
       {
         id: 2,
         title: "7/24 Profesyonel Ekip",
         subtitle: "Pırıl Pırıl Bir Yaşam Alanı",
         desc: "Eviniz veya ofisiniz için detaylı hijyen çözümleri. Aynı gün hizmet imkanıyla zamandan tasarruf edin.",
-        image: "/images/gallery/ferahlik.jpg"
+        image: "/images/hero2.jpg"
       },
       {
         id: 3,
         title: "Kurumsal Çözümler",
         subtitle: "Ofisten Fabrikaya Hijyen Standartları",
         desc: "Büyük ölçekli projelerde uzman kadromuzla yanınızdayız. Periyodik bakım planlarıyla sürekli temizlik garantisi.",
-        image: "/images/gallery/kurumsal.jpg"
+        image: "/images/hero3.jpg"
+      },
+      {
+        id: 4,
+        title: "Detaylı Hijyen",
+        subtitle: "Her Köşede Kusursuz Temizlik",
+        desc: "Uzman ekibimizle evinizin ve ofisinizin her köşesini derinlemesine temizliyoruz. Sağlıklı yaşam alanları için yanınızdayız.",
+        image: "/images/hero4.png"
       }
     ]
   },
@@ -72,8 +79,8 @@ const initialData: CMSData = {
     phone: "0 552 947 5313",
     whatsapp: "905529475313",
     instagram: "safirtemizlik.hizmetleri",
-    address: "İstanbul Geneli Hizmet Ağı",
-    email: "okan428215@gmail.com"
+    address: "Atatürk Mah. Demokrasi Cad. Alaca Sk. No:37 Sancaktepe/İSTANBUL",
+    email: "safir.temizlik.official@gmail.com"
   },
   pricing: {
     baseFee: 2450,

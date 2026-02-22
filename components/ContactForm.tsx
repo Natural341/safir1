@@ -16,7 +16,7 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -43,7 +43,7 @@ const ContactForm: React.FC = () => {
     <section id="contact" className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          
+
           <div className="space-y-12">
             <div>
               <h2 className="text-blue-600 font-black tracking-[0.3em] uppercase text-[11px] mb-4">İletişim</h2>
@@ -52,27 +52,26 @@ const ContactForm: React.FC = () => {
             </div>
 
             <div className="flex flex-wrap gap-6">
-               <a href={`tel:${data.contact.phone}`} className="flex flex-col items-center gap-3">
-                 <div className="w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg active:scale-95 transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                 </div>
-                 <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">Arayın</span>
-               </a>
+              <a href={`tel:${data.contact.phone}`} className="flex flex-col items-center gap-3">
+                <div className="w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg active:scale-95 transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">Arayın</span>
+              </a>
 
-               <a href={`https://wa.me/${data.contact.whatsapp}`} target="_blank" className="flex flex-col items-center gap-3">
-                 <div className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center shadow-lg active:scale-95 transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                 </div>
-                 <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">WhatsApp</span>
-               </a>
+              <a href={`https://wa.me/${data.contact.whatsapp}`} target="_blank" className="flex flex-col items-center gap-3">
+                <div className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center shadow-lg active:scale-95 transition-all">
+                  <img src="/whatsapp.svg" alt="WhatsApp" className="w-10 h-10" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">WhatsApp</span>
+              </a>
 
-               {/* Mat Instagram Butonu - Hover Yok */}
-               <a href={`https://instagram.com/${data.contact.instagram}`} target="_blank" className="flex flex-col items-center gap-3">
-                 <div className="w-16 h-16 rounded-full bg-slate-800 text-white flex items-center justify-center shadow-lg pointer-events-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                 </div>
-                 <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">Instagram</span>
-               </a>
+              <a href={`https://www.instagram.com/${data.contact.instagram}`} target="_blank" className="flex flex-col items-center gap-3">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white flex items-center justify-center shadow-lg active:scale-95 transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">Instagram</span>
+              </a>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-8">
@@ -82,7 +81,9 @@ const ContactForm: React.FC = () => {
               </div>
               <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100">
                 <h4 className="font-black text-slate-900 mb-2">Merkez Ofis</h4>
-                <p className="text-slate-500 text-sm font-medium">{data.contact.address}</p>
+                <a href="https://maps.google.com/?q=Atatürk+Mah.+Demokrasi+Cad.+Alaca+Sk.+No:37+Sancaktepe+İstanbul" target="_blank" rel="noopener noreferrer" className="text-slate-500 text-sm font-medium hover:text-blue-600 transition-colors underline underline-offset-2">
+                  {data.contact.address}
+                </a>
               </div>
             </div>
           </div>
@@ -112,19 +113,18 @@ const ContactForm: React.FC = () => {
                 <label className={labelClass}>Mesajınız</label>
                 <textarea required name="message" value={formData.message} onChange={handleChange} rows={4} placeholder="Detaylar..." className={`${inputClass} resize-none`} />
               </div>
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 disabled={status === 'loading'}
-                className={`w-full py-5 rounded-2xl font-black text-base transition-all active:scale-95 shadow-xl ${
-                  status === 'success' ? 'bg-green-500 text-white' : 
-                  status === 'error' ? 'bg-red-500 text-white' : 
-                  'bg-slate-900 text-white hover:bg-blue-600'
-                }`}
+                className={`w-full py-5 rounded-2xl font-black text-base transition-all active:scale-95 shadow-xl ${status === 'success' ? 'bg-green-500 text-white' :
+                  status === 'error' ? 'bg-red-500 text-white' :
+                    'bg-slate-900 text-white hover:bg-blue-600'
+                  }`}
               >
-                {status === 'loading' ? 'Gönderiliyor...' : 
-                 status === 'success' ? 'Mesajınız Alındı!' : 
-                 status === 'error' ? 'Hata Oluştu, Tekrar Deneyin' : 
-                 'Mesaj Gönder'}
+                {status === 'loading' ? 'Gönderiliyor...' :
+                  status === 'success' ? 'Mesajınız Alındı!' :
+                    status === 'error' ? 'Hata Oluştu, Tekrar Deneyin' :
+                      'Mesaj Gönder'}
               </button>
             </form>
           </div>

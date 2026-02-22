@@ -126,13 +126,21 @@ export default function ServicesPage() {
                                     ))}
                                 </div>
 
-                                <Link
-                                    href="/#contact"
-                                    className="inline-flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-blue-600 transition-all hover:scale-105 active:scale-95 shadow-xl"
-                                >
-                                    Teklif Alın
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-                                </Link>
+                                <div className="flex flex-wrap gap-3">
+                                    <Link
+                                        href={`/hizmetler/${service.id === 'bos-ev' ? 'bos-ev-temizligi' : service.id === 'malzemeli' ? 'malzemeli-temizlik' : service.id === 'kurumsal' ? 'kurumsal-temizlik' : `${service.id}-temizligi`}`}
+                                        className="inline-flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-blue-600 transition-all hover:scale-105 active:scale-95 shadow-xl"
+                                    >
+                                        DETAYLI İNCELE
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                                    </Link>
+                                    <a
+                                        href="tel:05529475313"
+                                        className="inline-flex items-center gap-3 bg-white border-2 border-slate-200 text-slate-700 px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"
+                                    >
+                                        HEMEN ARA
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     ))}

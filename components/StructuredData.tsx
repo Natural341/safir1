@@ -5,7 +5,12 @@ const faqItems = [
   { question: "Personel güvenilir mi?", answer: "Safir Temizlik bünyesindeki tüm personeller eğitimli, sigortalı ve profesyonel ekibimizden oluşmaktadır. Yaşam alanlarınızın güvenliği bizim için birincil önceliktir." },
   { question: "Ödemeyi nasıl yapabilirim?", answer: "Kapıda nakit veya kredi kartı seçeneklerimiz mevcuttur. Yakında online ödeme sistemimiz de aktif olacaktır." },
   { question: "Aynı gün hizmet alabilir miyim?", answer: "Müsaitlik durumuna göre İstanbul genelinde 4 saat içinde servis sağlayabiliyoruz." },
-  { question: "Memnun kalmazsam ne olur?", answer: "Hizmet sonrası 24 saat içinde bildirdiğiniz tüm aksaklıklar için ücretsiz telafi temizliği garantisi veriyoruz." }
+  { question: "Memnun kalmazsam ne olur?", answer: "Hizmet sonrası 24 saat içinde bildirdiğiniz tüm aksaklıklar için ücretsiz telafi temizliği garantisi veriyoruz." },
+  { question: "İstanbul'un hangi ilçelerine hizmet veriyorsunuz?", answer: "İstanbul'un Avrupa ve Anadolu yakasında toplam 39 ilçeye hizmet vermekteyiz. Beşiktaş, Kadıköy, Şişli, Bakırköy, Üsküdar, Ataşehir ve diğer tüm ilçelerde profesyonel temizlik ekiplerimiz bulunmaktadır." },
+  { question: "İnşaat sonrası temizlik fiyatları ne kadar?", answer: "İnşaat sonrası temizlik fiyatlarımız metrekare ve temizlik derinliğine göre değişmektedir. Web sitemizdeki fiyat hesaplama aracımızdan anında teklif alabilir veya WhatsApp hattımızdan detaylı bilgi alabilirsiniz." },
+  { question: "Düzenli temizlik hizmeti alabilir miyim?", answer: "Evet, haftalık, iki haftada bir veya aylık periyodik temizlik paketlerimiz mevcuttur. Düzenli müşterilerimize özel indirimli fiyatlar sunuyoruz." },
+  { question: "Temizlik ne kadar sürer?", answer: "Hizmet süresi evinizin veya ofisinizin büyüklüğüne, oda sayısına ve seçtiğiniz temizlik türüne göre değişir. Ortalama bir daire temizliği 3-5 saat, detaylı temizlik ise 5-8 saat sürmektedir." },
+  { question: "Hafta sonu ve resmi tatillerde hizmet veriyor musunuz?", answer: "Evet, 7 gün 24 saat hizmet vermekteyiz. Hafta sonu ve resmi tatillerde de ekiplerimiz aktif olarak çalışmaktadır. Bayram dönemlerinde yoğunluk yaşanabileceğinden erken rezervasyon yapmanızı öneririz." }
 ];
 
 export default function StructuredData() {
@@ -19,9 +24,10 @@ export default function StructuredData() {
     "telephone": "+905529475313",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "İstanbul Geneli Hizmet Ağı",
-      "addressLocality": "İstanbul",
-      "postalCode": "34000",
+      "streetAddress": "Atatürk Mah. Demokrasi Cad. Alaca Sk. No:37",
+      "addressLocality": "Sancaktepe",
+      "addressRegion": "İstanbul",
+      "postalCode": "34785",
       "addressCountry": "TR"
     },
     "geo": {
@@ -44,7 +50,7 @@ export default function StructuredData() {
       "closes": "22:00"
     },
     "sameAs": [
-      "https://instagram.com/safirtemizlik.hizmetleri"
+      "https://www.instagram.com/safirtemizlik.hizmetleri"
     ],
     "priceRange": "₺₺",
     "aggregateRating": {
@@ -56,29 +62,23 @@ export default function StructuredData() {
       "@type": "OfferCatalog",
       "name": "Temizlik Hizmetleri",
       "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Ev Temizliği"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Ofis Temizliği"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "İnşaat Sonrası Temizlik"
-          }
-        }
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ev Temizliği", "description": "İstanbul genelinde profesyonel ev temizliği hizmeti" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ofis Temizliği", "description": "Kurumsal ofis ve iş yeri temizliği" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "İnşaat Sonrası Temizlik", "description": "Yeni bina ve tadilat sonrası derin temizlik" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Apartman Temizliği", "description": "Apartman ve site ortak alan temizliği" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Boş Ev Temizliği", "description": "Taşınma öncesi ve sonrası boş ev temizliği" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cam Temizliği", "description": "İç ve dış cephe cam temizliği" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Malzemeli Temizlik", "description": "Tüm ekipman ve deterjan dahil temizlik" } }
       ]
-    }
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "İstanbul",
+      "@id": "https://www.wikidata.org/wiki/Q406"
+    },
+    "knowsLanguage": "tr",
+    "paymentAccepted": ["Nakit", "Kredi Kartı"],
+    "currenciesAccepted": "TRY"
   };
 
   const faqJsonLd = {

@@ -53,31 +53,13 @@
       "disableStaticImages": false,
       "minimumCacheTTL": 60,
       "formats": [
+        "image/avif",
         "image/webp"
       ],
       "dangerouslyAllowSVG": false,
       "contentSecurityPolicy": "script-src 'none'; frame-src 'none'; sandbox;",
       "contentDispositionType": "attachment",
-      "remotePatterns": [
-        {
-          "protocol": "https",
-          "hostname": "images.unsplash.com",
-          "port": "",
-          "pathname": "/**"
-        },
-        {
-          "protocol": "https",
-          "hostname": "plus.unsplash.com",
-          "port": "",
-          "pathname": "/**"
-        },
-        {
-          "protocol": "https",
-          "hostname": "picsum.photos",
-          "port": "",
-          "pathname": "/**"
-        }
-      ],
+      "remotePatterns": [],
       "unoptimized": false
     },
     "devIndicators": {

@@ -28,12 +28,12 @@ const Footer: React.FC = () => {
 
           <div className="lg:col-span-4 flex flex-col items-start text-left">
             <Link href="/" className="flex items-center gap-4 mb-8 group">
-              <div className="relative w-14 h-14 overflow-hidden rounded-2xl shadow-xl ring-1 ring-white/10">
-                <Image 
-                  src="/logo.png" 
-                  alt="Safir Temizlik Logo" 
-                  fill 
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+              <div className="relative w-14 h-14 overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-white/10">
+                <Image
+                  src="/logo.png"
+                  alt="Safir Temizlik Logo"
+                  fill
+                  className="object-contain p-1.5 group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="flex flex-col">
@@ -51,10 +51,10 @@ const Footer: React.FC = () => {
                 <li><Link href="/#services" className="hover:text-blue-400 transition-colors">Ev Temizliği</Link></li>
                 <li><Link href="/#services" className="hover:text-blue-400 transition-colors">Ofis Temizliği</Link></li>
                 <li><Link href="/#services" className="hover:text-blue-400 transition-colors">Apartman Temizliği</Link></li>
-                <li><Link href="/#services" className="hover:text-blue-400 transition-colors">Boş Ev Temizliği</Link></li>
                 <li><Link href="/#services" className="hover:text-blue-400 transition-colors">Cam Temizliği</Link></li>
                 <li><Link href="/#services" className="hover:text-blue-400 transition-colors">Kurumsal Temizlik</Link></li>
-                <li><Link href="/#services" className="hover:text-blue-400 transition-colors">Malzemeli Temizlik</Link></li>
+                <li><Link href="/hakkimizda" className="hover:text-blue-400 transition-colors">Hakkımızda</Link></li>
+                <li><Link href="/blog" className="hover:text-blue-400 transition-colors">Blog</Link></li>
               </ul>
             </div>
           </div>

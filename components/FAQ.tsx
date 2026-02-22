@@ -7,7 +7,12 @@ const faqs = [
   { q: "Personel güvenilir mi?", a: "Safir Temizlik bünyesindeki tüm personeller eğitimli, sigortalı ve profesyonel ekibimizden oluşmaktadır. Yaşam alanlarınızın güvenliği bizim için birincil önceliktir." },
   { q: "Ödemeyi nasıl yapabilirim?", a: "Kapıda nakit veya kredi kartı seçeneklerimiz mevcuttur. Yakında online ödeme sistemimiz de aktif olacaktır." },
   { q: "Aynı gün hizmet alabilir miyim?", a: "Müsaitlik durumuna göre İstanbul genelinde 4 saat içinde servis sağlayabiliyoruz." },
-  { q: "Memnun kalmazsam ne olur?", a: "Hizmet sonrası 24 saat içinde bildirdiğiniz tüm aksaklıklar için ücretsiz telafi temizliği garantisi veriyoruz." }
+  { q: "Memnun kalmazsam ne olur?", a: "Hizmet sonrası 24 saat içinde bildirdiğiniz tüm aksaklıklar için ücretsiz telafi temizliği garantisi veriyoruz." },
+  { q: "İstanbul'un hangi ilçelerine hizmet veriyorsunuz?", a: "İstanbul'un Avrupa ve Anadolu yakasında toplam 39 ilçeye hizmet vermekteyiz. Beşiktaş, Kadıköy, Şişli, Bakırköy, Üsküdar, Ataşehir ve diğer tüm ilçelerde profesyonel temizlik ekiplerimiz bulunmaktadır." },
+  { q: "İnşaat sonrası temizlik fiyatları ne kadar?", a: "İnşaat sonrası temizlik fiyatlarımız metrekare ve temizlik derinliğine göre değişmektedir. Web sitemizdeki fiyat hesaplama aracımızdan anında teklif alabilir veya WhatsApp hattımızdan detaylı bilgi alabilirsiniz." },
+  { q: "Düzenli temizlik hizmeti alabilir miyim?", a: "Evet, haftalık, iki haftada bir veya aylık periyodik temizlik paketlerimiz mevcuttur. Düzenli müşterilerimize özel indirimli fiyatlar sunuyoruz." },
+  { q: "Temizlik ne kadar sürer?", a: "Hizmet süresi evinizin veya ofisinizin büyüklüğüne, oda sayısına ve seçtiğiniz temizlik türüne göre değişir. Ortalama bir daire temizliği 3-5 saat, detaylı temizlik ise 5-8 saat sürmektedir." },
+  { q: "Hafta sonu ve resmi tatillerde hizmet veriyor musunuz?", a: "Evet, 7 gün 24 saat hizmet vermekteyiz. Hafta sonu ve resmi tatillerde de ekiplerimiz aktif olarak çalışmaktadır. Bayram dönemlerinde yoğunluk yaşanabileceğinden erken rezervasyon yapmanızı öneririz." }
 ];
 
 export default function FAQ() {
