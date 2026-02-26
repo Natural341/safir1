@@ -119,7 +119,11 @@ export const CMSProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     fetch('/api/cms')
       .then(res => res.json())
       .then(savedData => {
-        if (savedData) setData(savedData);
+        if (savedData && !savedData.error && savedData.hero) {
+          setData(savedData);
+        } else {
+          console.warn("CMS API döndürülen veride eksikler var. Varsayılan veri korunuyor.");
+        }
       })
       .catch(err => console.error("CMS veri çekme hatası:", err));
   }, []);

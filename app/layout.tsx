@@ -95,6 +95,8 @@ export default function RootLayout({
   return (
     <html lang="tr" className="scroll-smooth">
       <head>
+      </head>
+      <body className={inter.className}>
         <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=AW-17977051033" />
         <Script id="google-tag" strategy="afterInteractive">
           {`
@@ -105,8 +107,6 @@ export default function RootLayout({
             gtag('config', 'AW-17977051033');
           `}
         </Script>
-      </head>
-      <body className={inter.className}>
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[999] focus:p-4 focus:bg-white focus:text-black">
           Ana İçeriğe Atla
         </a>
@@ -118,6 +118,6 @@ export default function RootLayout({
           <FloatingActions />
         </CMSProvider>
       </body>
-    </html>
+    </html >
   );
 }

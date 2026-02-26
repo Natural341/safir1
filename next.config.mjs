@@ -4,9 +4,6 @@ const nextConfig = {
   trailingSlash: true,
   compress: true,
   poweredByHeader: false,
-  experimental: {
-    reactCompiler: true
-  },
   images: {
     formats: ['image/avif', 'image/webp'],
   },
