@@ -51,11 +51,11 @@ export default function ReviewForm({ token }: { token: string }) {
   return (
     <div className="max-w-lg mx-auto bg-white rounded-[3rem] shadow-2xl p-8 md:p-12 border border-slate-100 mt-20 mb-32 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-[5rem] -mr-10 -mt-10 z-0"></div>
-      
+
       <div className="relative z-10">
         <h2 className="text-blue-600 font-black tracking-widest uppercase text-xs mb-4">Hizmet Değerlendirme</h2>
         <h3 className="text-4xl font-black text-slate-900 tracking-tighter mb-10">Deneyiminizi Paylaşın</h3>
-        
+
         <form onSubmit={handleSubmit} className="space-y-8">
           <div>
             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 block">Puanınız</label>
@@ -64,6 +64,7 @@ export default function ReviewForm({ token }: { token: string }) {
                 <button
                   key={star}
                   type="button"
+                  aria-label={`${star} yıldız ver`}
                   onClick={() => setRating(star)}
                   className={`p-2 transition-all hover:scale-110 active:scale-95 ${rating >= star ? 'text-amber-400' : 'text-slate-200'}`}
                 >
@@ -74,8 +75,9 @@ export default function ReviewForm({ token }: { token: string }) {
           </div>
 
           <div className="space-y-4">
-            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block">Adınız Soyadınız</label>
+            <label htmlFor="reviewer-name" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block">Adınız Soyadınız</label>
             <input
+              id="reviewer-name"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -85,8 +87,9 @@ export default function ReviewForm({ token }: { token: string }) {
           </div>
 
           <div className="space-y-4">
-            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block">Yorumunuz</label>
+            <label htmlFor="reviewer-comment" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block">Yorumunuz</label>
             <textarea
+              id="reviewer-comment"
               required
               value={comment}
               onChange={(e) => setComment(e.target.value)}

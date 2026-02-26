@@ -3,5 +3,17 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 Disallow: /login
+Disallow: /admin/*
+
+User-Agent: GPTBot
+User-Agent: ChatGPT-User
+User-Agent: Claude-Bot
+User-Agent: PerplexityBot
+User-Agent: CCBot
+Allow: /
+Allow: /blog
+Allow: /services
+Disallow: /admin/
+Disallow: /api/
 
 Sitemap: https://safirtemizlik.com.tr/sitemap.xml

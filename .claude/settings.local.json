@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh:*)",
+      "Bash(nslookup:*)",
+      "Bash(curl -I https://istanbulsafirtemizlik.com)",
+      "Bash(tail:*)",
+      "Bash(curl:*)",
+      "Bash(nmap:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}

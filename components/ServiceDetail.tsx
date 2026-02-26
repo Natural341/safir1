@@ -61,7 +61,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceId, onClose }) => 
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black text-sm">S</div>
             <span className="font-black text-xs uppercase tracking-widest text-slate-400">Hizmet Detayı</span>
           </div>
-          <button onClick={onClose} className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-500 hover:bg-blue-600 hover:text-white transition-all">✕</button>
+          <button aria-label="Kapat" onClick={onClose} className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-500 hover:bg-blue-600 hover:text-white transition-all">✕</button>
         </div>
       </div>
 

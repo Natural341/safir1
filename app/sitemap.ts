@@ -17,6 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: post.updatedAt,
       changeFrequency: 'weekly' as const,
       priority: 0.6,
+      images: [`${baseUrl}/api/og`],
     }));
   } catch {
     // Fallback if DB is unavailable
@@ -29,6 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
+    images: [`${baseUrl}/logo.png`],
   }));
 
   // Hizmet detay sayfaları
@@ -37,6 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.85,
+    images: [`${baseUrl}/logo.png`],
   }));
 
   return [
@@ -45,6 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1,
+      images: [`${baseUrl}/logo.png`, `${baseUrl}/logo1.png`],
     },
     {
       url: `${baseUrl}/services`,

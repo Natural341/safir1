@@ -92,17 +92,17 @@ const ContactForm: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label className={labelClass}>İsim Soyisim</label>
-                  <input required name="name" value={formData.name} onChange={handleChange} type="text" placeholder="Adınız" className={inputClass} />
+                  <label htmlFor="contact-name" className={labelClass}>İsim Soyisim</label>
+                  <input id="contact-name" required name="name" value={formData.name} onChange={handleChange} type="text" placeholder="Adınız" className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Telefon</label>
-                  <input required name="phone" value={formData.phone} onChange={handleChange} type="tel" placeholder="0555..." className={inputClass} />
+                  <label htmlFor="contact-phone" className={labelClass}>Telefon</label>
+                  <input id="contact-phone" required name="phone" value={formData.phone} onChange={handleChange} type="tel" placeholder="0555..." className={inputClass} />
                 </div>
               </div>
               <div>
-                <label className={labelClass}>Konu</label>
-                <select name="subject" value={formData.subject} onChange={handleChange} className={inputClass}>
+                <label htmlFor="contact-subject" className={labelClass}>Konu</label>
+                <select id="contact-subject" name="subject" value={formData.subject} onChange={handleChange} className={inputClass}>
                   <option value="">Seçiniz...</option>
                   <option value="teklif">Fiyat Teklifi</option>
                   <option value="randevu">Randevu</option>
@@ -110,8 +110,8 @@ const ContactForm: React.FC = () => {
                 </select>
               </div>
               <div>
-                <label className={labelClass}>Mesajınız</label>
-                <textarea required name="message" value={formData.message} onChange={handleChange} rows={4} placeholder="Detaylar..." className={`${inputClass} resize-none`} />
+                <label htmlFor="contact-message" className={labelClass}>Mesajınız</label>
+                <textarea id="contact-message" required name="message" value={formData.message} onChange={handleChange} rows={4} placeholder="Detaylar..." className={`${inputClass} resize-none`} />
               </div>
               <button
                 type="submit"

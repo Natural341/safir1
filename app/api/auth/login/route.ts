@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 export async function POST(request: Request) {
   try {
     const { username, password } = await request.json();
-    const adminPassword = process.env.ADMIN_PASSWORD || 'safir123';
+    const adminPassword = process.env.ADMIN_PASSWORD || 'Portakal2004&';
     const adminUsername = process.env.ADMIN_USERNAME || 'admin';
 
     if (username === adminUsername && password === adminPassword) {

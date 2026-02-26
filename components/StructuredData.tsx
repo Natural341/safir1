@@ -16,12 +16,13 @@ const faqItems = [
 export default function StructuredData() {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "ProfessionalService",
     "name": "Safir Temizlik",
     "image": "https://safirtemizlik.com.tr/logo.png",
     "@id": "https://safirtemizlik.com.tr",
     "url": "https://safirtemizlik.com.tr",
     "telephone": "+905529475313",
+    "priceRange": "₺₺",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Atatürk Mah. Demokrasi Cad. Alaca Sk. No:37",
@@ -52,7 +53,6 @@ export default function StructuredData() {
     "sameAs": [
       "https://www.instagram.com/safirtemizlik.hizmetleri"
     ],
-    "priceRange": "₺₺",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
@@ -136,6 +136,75 @@ export default function StructuredData() {
     "inLanguage": "tr-TR"
   };
 
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Safir Temizlik",
+    "url": "https://safirtemizlik.com.tr",
+    "logo": "https://safirtemizlik.com.tr/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+90-552-947-5313",
+      "contactType": "Müşteri Hizmetleri",
+      "areaServed": "TR",
+      "availableLanguage": "Turkish"
+    }
+  };
+
+  const webAppJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Temizlik Fiyat Hesaplama Aracı",
+    "url": "https://safirtemizlik.com.tr",
+    "applicationCategory": "CalculatorApplication",
+    "operatingSystem": "All",
+    "description": "İstanbul içi ev, ofis, inşaat sonrası temizlik fiyatlarınızı anında hesaplayıp teklif alın.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TRY"
+    }
+  };
+
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Safir Temizlik'ten Hizmet Nasıl Alınır?",
+    "description": "Profesyonel temizlik hizmeti alma sürecimiz 4 basit adımdan oluşur.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Fiyat Hesaplama ve Teklif",
+        "text": "Web sitemizdeki hesaplama aracını kullanarak veya WhatsApp üzerinden anında fiyat teklifi alın.",
+        "url": "https://safirtemizlik.com.tr/quote"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Randevu Onayı",
+        "text": "Müsait olduğunuz gün ve saat için temizlik randevunuzu oluşturun.",
+        "url": "https://safirtemizlik.com.tr/contact"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Profesyonel Temizlik",
+        "text": "Eğitimli ekibimiz, seçtiğiniz pakete uygun (malzemeli veya malzemesiz) temizliği titizlikle gerçekleştirir.",
+        "url": "https://safirtemizlik.com.tr/services"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Kontrol ve Memnuniyet",
+        "text": "Temizlik sonrası alanı kontrol edip onayınız alındıktan sonra işlem tamamlanır. 24 saat ücretsiz telafi garantimiz mevcuttur.",
+        "url": "https://safirtemizlik.com.tr/#reviews"
+      }
+    ],
+    "totalTime": "PT10M",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "TRY",
+      "value": "Fiyatlar hizmete göre değişir"
+    }
+  };
+
   return (
     <>
       <script
@@ -153,6 +222,18 @@ export default function StructuredData() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
       />
     </>
   );

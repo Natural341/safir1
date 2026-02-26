@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
               <div className="relative w-14 h-14 overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-white/10">
                 <Image
                   src="/logo.png"
-                  alt="Safir Temizlik Logo"
+                  alt="Safir Temizlik"
                   fill
                   className="object-contain p-1.5 group-hover:scale-110 transition-transform duration-500"
                 />
@@ -78,9 +78,10 @@ const Footer: React.FC = () => {
 
               {/* Opsiyonel E-Posta Formu */}
               <div className="pt-4 border-t border-slate-800 w-full">
-                <p className="text-slate-500 text-xs font-bold uppercase tracking-widest mb-3 lg:text-right">Bize E-Posta Gönderin</p>
+                <p id="footer-email-label" className="text-slate-500 text-xs font-bold uppercase tracking-widest mb-3 lg:text-right">Bize E-Posta Gönderin</p>
                 <form onSubmit={handleEmailSubmit} className="flex gap-2 w-full lg:justify-end">
                   <input
+                    aria-labelledby="footer-email-label"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
